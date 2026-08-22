@@ -8,7 +8,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    children: [],
+    children: [{
+      path: '/',
+      element: <h1>Welcome to the Chat Application</h1>,
+    }],
   },
   {
     path: "/login",

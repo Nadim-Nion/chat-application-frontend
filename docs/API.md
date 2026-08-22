@@ -3,7 +3,7 @@
 ## Base URL
 
 ```text
-https://frontend-task-chatapp.onrender.com/docs/
+https://frontend-task-chatapp.onrender.com
 ```
 
 All API responses use JSON.
@@ -73,9 +73,9 @@ POST /auth/login
 
 ### Notes
 
-* If the phone number already exists, the existing user is authenticated.
-* If the phone number is new, a new user is created automatically.
-* The returned `user.id` uniquely identifies the user throughout the chat system.
+- If the phone number already exists, the existing user is authenticated.
+- If the phone number is new, a new user is created automatically.
+- The returned `user.id` uniquely identifies the user throughout the chat system.
 
 ---
 
@@ -134,9 +134,9 @@ GET /users/search?q=rahim&limit=10
 
 ### Notes
 
-* The authenticated user should not appear in their own search results.
-* Search should support both partial name matching and phone-number matching.
-* An empty result should return an empty array rather than an error.
+- The authenticated user should not appear in their own search results.
+- Search should support both partial name matching and phone-number matching.
+- An empty result should return an empty array rather than an error.
 
 Example:
 
@@ -390,9 +390,9 @@ GET /conversations/conv_123/messages?page=1&limit=50
 
 ### Notes
 
-* Only participants of the conversation can access its messages.
-* Messages should be returned in chronological order for straightforward rendering in the chat panel.
-* The frontend can use `sender.id` to determine whether a message belongs to the current user.
+- Only participants of the conversation can access its messages.
+- Messages should be returned in chronological order for straightforward rendering in the chat panel.
+- The frontend can use `sender.id` to determine whether a message belongs to the current user.
 
 ---
 
@@ -488,11 +488,7 @@ Required.
 ```json
 {
   "name": "Development Team",
-  "participantIds": [
-    "usr_456",
-    "usr_789",
-    "usr_999"
-  ]
+  "participantIds": ["usr_456", "usr_789", "usr_999"]
 }
 ```
 
@@ -549,11 +545,11 @@ Required.
 
 The API should reject:
 
-* Empty group names
-* Duplicate participant IDs
-* Invalid/non-existent users
-* A request that contains fewer participants than required for a group
-* The authenticated user's ID appearing multiple times
+- Empty group names
+- Duplicate participant IDs
+- Invalid/non-existent users
+- A request that contains fewer participants than required for a group
+- The authenticated user's ID appearing multiple times
 
 The authenticated user should automatically become a participant of the newly created group.
 
@@ -776,4 +772,3 @@ while errors follow:
   "error": {}
 }
 ```
-
