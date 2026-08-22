@@ -1,30 +1,37 @@
 import { createBrowserRouter } from "react-router";
+
 import App from "../App";
+import ChatPage from "../pages/ChatPage";
 import Login from "../pages/Login";
-import Register from "../pages/Register";
+import ProtectedRoute from "./ProtectedRoute";
+// import ProtectedRoute from "../components/ProtectedRoute";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        path: "/",
-        element: <h1>Welcome to the Chat Application</h1>,
-      },
-      {
-        path: "/chat",
-        element: <h1>Chat Page</h1>,
-      },
-    ],
-  },
+  // Public routes
   {
     path: "/login",
     element: <Login />,
   },
+
+  // Protected routes
   {
-    path: "/register",
-    element: <Register />,
+    element: <ProtectedRoute />,
+    children: [
+      {
+        path: "/",
+        element: <App />,
+        children: [
+          {
+            index: true,
+            element: <h1>Welcome to the Chat Application</h1>,
+          },
+        ],
+      },
+      {
+        path: "/chat",
+        element: <ChatPage />,
+      },
+    ],
   },
 ]);
 

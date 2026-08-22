@@ -3,6 +3,8 @@ import { useMemo, useState } from "react";
 import ConversationList from "../components/chat/ConversationList";
 // import MessageInput from "../components/chat/MessageInput";
 // import MessageList from "../components/chat/MessageList";
+import MessageInput from "../components/chat/MessageInput";
+import MessageList from "../components/chat/MessageList";
 import { Avatar } from "../components/common/Avatar";
 import {
   type Conversation,
@@ -10,8 +12,6 @@ import {
   currentUser,
   messages,
 } from "../data/mockData";
-import MessageList from "../components/chat/MessageList";
-import MessageInput from "../components/chat/MessageInput";
 
 const ChatPage = () => {
   const [activeConversation, setActiveConversation] =
