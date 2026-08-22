@@ -4,12 +4,12 @@ import App from "../App";
 import ChatPage from "../pages/ChatPage";
 import Login from "../pages/Login";
 import ProtectedRoute from "./ProtectedRoute";
-// import ProtectedRoute from "../components/ProtectedRoute";
 
 const router = createBrowserRouter([
   // Public routes
   {
-    path: "/login",
+    // path: "/login",
+    index: true,
     element: <Login />,
   },
 
@@ -22,14 +22,10 @@ const router = createBrowserRouter([
         element: <App />,
         children: [
           {
-            index: true,
-            element: <h1>Welcome to the Chat Application</h1>,
+            path: "chat",
+            element: <ChatPage />,
           },
         ],
-      },
-      {
-        path: "/chat",
-        element: <ChatPage />,
       },
     ],
   },

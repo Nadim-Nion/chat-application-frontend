@@ -95,7 +95,7 @@ const Login = () => {
       }
 
       // Redirect to the chat page or perform any other action after successful login
-      navigate("/chat");
+      navigate("/chat", { replace: true });
     } catch (error) {
       setSubmitError(
         error instanceof Error
