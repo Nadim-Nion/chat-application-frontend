@@ -10,6 +10,7 @@ import {
   currentUser,
   messages,
 } from "../data/mockData";
+import MessageList from "../components/chat/MessageList";
 
 const ChatPage = () => {
   const [activeConversation, setActiveConversation] =
