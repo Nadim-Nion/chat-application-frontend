@@ -1,19 +1,31 @@
+import { MessageCircle, Phone, User } from "lucide-react";
 import { useState } from "react";
-import {
-  MessageCircle,
-  Phone,
-  User,
-} from "lucide-react";
 import { useForm, type SubmitHandler } from "react-hook-form";
+import { useNavigate } from "react-router";
+import Swal from "sweetalert2";
 
 type LoginFormInputs = {
   name: string;
-  phoneNumber: string;
+  phone: string;
+};
+
+type LoginResponse = {
+  success?: boolean;
+  message?: string;
+  accessToken?: string;
+  token?: string;
+  user?: {
+    id: string;
+    name: string;
+    phone: string;
+  };
 };
 
 const Login = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
+
+  const navigate = useNavigate();
 
   const {
     register,
@@ -23,12 +35,11 @@ const Login = () => {
     mode: "onChange",
     defaultValues: {
       name: "",
-      phoneNumber: "",
+      phone: "",
     },
   });
 
-  const phoneRegex =
-    /^\+?[0-9]{1,4}[-\s.]?[0-9]{3,4}[-\s.]?[0-9]{3,9}$/;
+  const phoneRegex = /^\+?[0-9]{1,4}[-\s.]?[0-9]{3,4}[-\s.]?[0-9]{3,9}$/;
 
   const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
     setIsSubmitting(true);
@@ -40,27 +51,56 @@ const Login = () => {
       // Replace with your actual API request
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
-      
-      const response = await fetch(`${import.meta.env.BASE_URL}/auth/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/auth/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
         },
-        body: JSON.stringify(data),
-      });
+      );
+
+      const result: LoginResponse = await response.json();
 
       if (!response.ok) {
-        throw new Error("Unable to continue. Please try again.");
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Login failed",
+          showConfirmButton: false,
+          timer: 1500,
+          theme: "auto",
+        });
+        throw new Error(
+          result.message || "Unable to continue. Please try again.",
+        );
       }
 
-      const result = await response.json();
-      console.log(result);
-     
+      // const result = await response.json();
+      console.log("Login successful:", result);
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Login successful",
+        showConfirmButton: false,
+        timer: 1500,
+        theme: "auto",
+      });
+
+      const accessToken = result.accessToken || result.token;
+      if (accessToken) {
+        localStorage.setItem("accessToken", accessToken);
+      }
+
+      // Redirect to the chat page or perform any other action after successful login
+      navigate("/chat");
     } catch (error) {
       setSubmitError(
         error instanceof Error
           ? error.message
-          : "Unable to continue. Please try again."
+          : "Unable to continue. Please try again.",
       );
     } finally {
       setIsSubmitting(false);
@@ -90,14 +130,10 @@ const Login = () => {
       {/* Content */}
       <div className="relative flex min-h-screen items-center justify-center px-4 py-10 sm:px-6">
         <div className="w-full max-w-md">
-
           {/* Brand */}
           <div className="mb-8 text-center">
             <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-linear-to-br from-blue-500 to-violet-600 shadow-lg shadow-blue-500/20">
-              <MessageCircle
-                className="h-7 w-7 text-white"
-                strokeWidth={2.2}
-              />
+              <MessageCircle className="h-7 w-7 text-white" strokeWidth={2.2} />
             </div>
 
             <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
@@ -111,7 +147,6 @@ const Login = () => {
 
           {/* Card */}
           <div className="rounded-3xl border border-white/8 bg-white/4.5 p-5 shadow-2xl shadow-black/30 backdrop-blur-xl sm:p-8">
-
             {/* Error */}
             {submitError && (
               <div
@@ -127,7 +162,6 @@ const Login = () => {
               noValidate
               className="space-y-5"
             >
-
               {/* Name */}
               <div>
                 <label
@@ -138,9 +172,7 @@ const Login = () => {
                 </label>
 
                 <div className="relative">
-                  <User
-                    className="pointer-events-none absolute left-4 top-1/2 h-4.5 w-4.5 -translate-y-1/2 text-slate-500"
-                  />
+                  <User className="pointer-events-none absolute left-4 top-1/2 h-4.5 w-4.5 -translate-y-1/2 text-slate-500" />
 
                   <input
                     id="name"
@@ -184,42 +216,39 @@ const Login = () => {
               {/* Phone Number */}
               <div>
                 <label
-                  htmlFor="phoneNumber"
+                  htmlFor="phone"
                   className="mb-2 block text-sm font-medium text-slate-200"
                 >
                   Phone number
                 </label>
 
                 <div className="relative">
-                  <Phone
-                    className="pointer-events-none absolute left-4 top-1/2 h-4.5 w-4.5 -translate-y-1/2 text-slate-500"
-                  />
+                  <Phone className="pointer-events-none absolute left-4 top-1/2 h-4.5 w-4.5 -translate-y-1/2 text-slate-500" />
 
                   <input
-                    id="phoneNumber"
+                    id="phone"
                     type="tel"
                     autoComplete="tel"
                     placeholder="+880 1712 345678"
-                    {...register("phoneNumber", {
+                    {...register("phone", {
                       required: "Phone number is required",
 
                       pattern: {
                         value: phoneRegex,
-                        message:
-                          "Please enter a valid phone number",
+                        message: "Please enter a valid phone number",
                       },
                     })}
                     className={`w-full rounded-xl border bg-slate-950/50 py-3.5 pl-11 pr-4 text-sm text-white outline-none transition placeholder:text-slate-600 focus:ring-2 ${
-                      errors.phoneNumber
+                      errors.phone
                         ? "border-red-500/50 focus:border-red-500 focus:ring-red-500/10"
                         : "border-white/10 focus:border-blue-500/60 focus:ring-blue-500/10"
                     }`}
                   />
                 </div>
 
-                {errors.phoneNumber && (
+                {errors.phone && (
                   <p className="mt-2 text-xs font-medium text-red-400">
-                    {errors.phoneNumber.message}
+                    {errors.phone.message}
                   </p>
                 )}
               </div>
@@ -234,13 +263,11 @@ const Login = () => {
                   {isSubmitting ? (
                     <>
                       <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
-
                       Connecting...
                     </>
                   ) : (
                     <>
                       Continue to Chat
-
                       <MessageCircle className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                     </>
                   )}
@@ -251,21 +278,10 @@ const Login = () => {
             {/* Info */}
             <div className="mt-7 rounded-xl border border-blue-500/10 bg-blue-500/5 p-4">
               <p className="text-center text-xs leading-relaxed text-slate-400">
-                Your name and phone number help us identify your account
-                and keep your conversations connected.
+                Your name and phone number help us identify your account and
+                keep your conversations connected.
               </p>
             </div>
-
-            {/* Register */}
-            <p className="mt-7 text-center text-sm text-slate-500">
-              New to Chat Application?{" "}
-              <a
-                href="/register"
-                className="font-semibold text-blue-400 transition hover:text-blue-300"
-              >
-                Create an account
-              </a>
-            </p>
           </div>
 
           {/* Footer */}
