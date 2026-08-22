@@ -556,6 +556,103 @@ a {
   line-height: 1.6;
 }
 
+.message-list {
+  position: relative;
+
+  min-height: 0;
+  flex: 1;
+
+  overflow-y: auto;
+
+  scroll-behavior: smooth;
+}
+
+.messages-content {
+  min-height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  gap: 8px;
+
+  padding: 24px;
+}
+
+.messages-empty {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+
+  text-align: center;
+}
+
+.messages-empty-icon {
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 14px;
+
+  background: #101929;
+
+  border: 1px solid #1d2a3e;
+
+  border-radius: 15px;
+
+  font-size: 20px;
+}
+
+.messages-empty h2 {
+  margin: 0;
+
+  color: #dce4ef;
+
+  font-size: 15px;
+}
+
+.messages-empty p {
+  margin: 7px 0 0;
+
+  color: #596981;
+
+  font-size: 12px;
+}
+
+.new-message-indicator {
+  position: sticky;
+
+  left: 50%;
+
+  bottom: 16px;
+
+  display: block;
+
+  margin: 0 auto 16px;
+  padding: 9px 15px;
+
+  color: white;
+
+  background: #2563ff;
+
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow: 0 8px 25px rgba(37, 99, 255, 0.35);
+}
+
 /* :root {
   --text: #6b6375;
   --text-h: #08060d;
