@@ -22,27 +22,27 @@ The project focuses on a clean, maintainable, and modular architecture while pro
 
 ## 📝 Part 3 — Q&A
 
-### 1. What architectural pattern did you choose?
+### 1. Why you chose your architecture/libraries/approach in Part 1, and any trade-offs you considered?
 
 > I have chosen modular pattern. Where I have created separated folder or component structure for chat where I have stored Chat Header, Conversation Item, Conversation List, Message Bubble, Message Input etc. I have made everything in the separate component to manage it perfectly. So that whenever my project grows I can refactor it easily without breaking the system.
 
 ---
 
-### 2. Question 2
+### 2. The reasoning behind your design choices in Part 2.
 
 > Didn't attempt
 
 ---
 
-### 3. How did you approach responsive design?
+### 3. How you used AI tools (if at all) — which tool(s), what you used them for (e.g., boilerplate, debugging, drafting the API documentation, research), and what you changed, rejected, or wrote yourself instead of relying on the AI's output.
 
 > I mostly used AI to add responsive design. Firstly, I have implemented the basic design, then add responsive design by the help of AI. I use AI as my coding partner. Before pasting the code, I preview the AI generated code as a code reviewer. I read every line of code before implementing to my project.
 
 ---
 
-### 4. What would you improve if you had more time?
+### 4. What you'd improve or do differently with more time
 
-> To be honest, Time is too short for me to implement this beautiful project. If I get 10 hours more, I would implement all the APIs and Part 2 landing page.
+> To be honest, Time is too short for me to implement this beautiful project. If I get few more hours, I would implement all the APIs and Part 2 landing page.
 
 ---
 
