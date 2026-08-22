@@ -1,5 +1,101 @@
 @import "tailwindcss";
 
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+
+  color: #f8fafc;
+  background: #050812;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+
+  --bg-primary: #050812;
+  --bg-secondary: #080d18;
+  --bg-surface: #111722;
+  --bg-input: #080d1c;
+
+  --border: #1d2637;
+  --border-light: #202b3e;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #8a98ae;
+  --text-muted: #526078;
+
+  --blue: #2563ff;
+  --purple: #7c2fff;
+
+  --sidebar-width: 320px;
+  --header-height: 72px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at 0% 0%,
+      rgba(37, 99, 255, 0.12),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 100% 100%,
+      rgba(124, 47, 255, 0.12),
+      transparent 30%
+    ),
+    var(--bg-primary);
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  border: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #283349;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #35425b;
+}
+
+
+
+
 /* :root {
   --text: #6b6375;
   --text-h: #08060d;
