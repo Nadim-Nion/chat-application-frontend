@@ -2,7 +2,119 @@
 
 ---
 
-A scalable and production-ready frontend starter template built with React, TypeScript, and modern tooling. This boilerplate is designed to help developers quickly kickstart building responsive and maintainable user interfaces with a well-structured and modular architecture.
+A modern, scalable, and production-ready frontend for a real-time **Chat Application**, built with React, TypeScript, and modern frontend technologies.
+
+The project focuses on a clean, maintainable, and modular architecture while providing a responsive user experience and real-time communication capabilities.
+
+---
+
+## 📚 Project Resources
+
+### 🔗 Links
+
+| Resource | Description | Link |
+|----------|-------------|------|
+| 📦 **GitHub Repository** | Source code and project documentation | [View Repository](https://github.com/Nadim-Nion/chat-application-frontend) |
+| 🌐 **Live URL — Part 1** | Live deployment for Part 1 | [View Live Demo](Add-Live-URL) |
+| 🌐 **Live URL — Part 2** | Live deployment for Part 2 | [View Live Demo](Add-Live-URL) |
+
+---
+
+## 📝 Part 3 — Q&A
+
+### 1. What architectural pattern did you choose?
+
+> I have chosen modular pattern. Where I have created separated folder or component structure for chat where I have stored Chat Header, Conversation Item, Conversation List, Message Bubble, Message Input etc. I have made everything in the separate component to manage it perfectly. So that whenever my project grows I can refactor it easily without breaking the system.
+
+---
+
+### 2. Question 2
+
+> Didn't attempt
+
+---
+
+### 3. How did you approach responsive design?
+
+> I mostly used AI to add responsive design. Firstly, I have implemented the basic design, then add responsive design by the help of AI. I use AI as my coding partner. Before pasting the code, I preview the AI generated code as a code reviewer. I read every line of code before implementing to my project.
+
+---
+
+### 4. What would you improve if you had more time?
+
+> To be honest, Time is too short for me to implement this beautiful project. If I get 10 hours more, I would implement all the APIs and Part 2 landing page.
+
+---
+
+## 🏗️ Project Architecture
+
+The application follows a modular and scalable architecture designed to keep the codebase clean, maintainable, and easy to extend.
+
+Key architectural principles include:
+
+- Component-based UI development
+- Separation of concerns
+- Centralized state management
+- Reusable components
+- Protected routes
+- Form validation
+- Real-time communication
+- Type-safe development with TypeScript
+
+---
+
+## ✨ Features
+
+- 🔐 User authentication
+- 👤 User profile management
+- 💬 Real-time messaging
+- 🔔 Real-time notifications
+- 🟢 Online/offline user status
+- 🔒 Protected routes
+- 📱 Responsive interface
+- ⚡ Fast client-side navigation
+- 📝 Form validation
+- 🗂️ Centralized application state
+- 🔄 Real-time updates using Socket.io
+
+---
+
+## 🔑 Authentication Flow
+
+The application uses a simplified authentication flow:
+
+1. User enters their **name** and **phone number**.
+2. The frontend sends the information to the authentication API.
+3. If the phone number already exists, the user is logged in.
+4. If the phone number is new, the API automatically creates a new user.
+5. The API returns authentication information.
+6. The user is redirected to the chat application.
+7. Protected routes prevent unauthenticated users from accessing the chat.
+
+```text
+User
+  │
+  ├── Name
+  └── Phone Number
+        │
+        ▼
+   Login API
+        │
+   ┌────┴────┐
+   │         │
+Existing   New User
+   │         │
+Login      Register
+   │         │
+   └────┬────┘
+        │
+        ▼
+ Authentication
+        │
+        ▼
+      /chat
+
+```
 
 ---
 
@@ -14,6 +126,7 @@ A scalable and production-ready frontend starter template built with React, Type
 - TypeScript – Strongly typed JavaScript
 - Ant Design – UI component library for building modern interfaces
 - Socket.io – Real-time bidirectional communication between client and server
+- React Hook Form - A lightweight library for managing form state, handling form submissions, and providing efficient client-side form validation.
 
 ---
 
