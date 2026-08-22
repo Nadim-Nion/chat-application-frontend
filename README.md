@@ -12,11 +12,11 @@ The project focuses on a clean, maintainable, and modular architecture while pro
 
 ### 🔗 Links
 
-| Resource | Description | Link |
-|----------|-------------|------|
+| Resource                 | Description                           | Link                                                                       |
+| ------------------------ | ------------------------------------- | -------------------------------------------------------------------------- |
 | 📦 **GitHub Repository** | Source code and project documentation | [View Repository](https://github.com/Nadim-Nion/chat-application-frontend) |
-| 🌐 **Live URL — Part 1** | Live deployment for Part 1 | [View Live Demo](Add-Live-URL) |
-| 🌐 **Live URL — Part 2** | Live deployment for Part 2 | [View Live Demo](Add-Live-URL) |
+| 🌐 **Live URL — Part 1** | Live deployment for Part 1            | [View Live Demo](https://dancing-figolla-32151b.netlify.app/)              |
+| 🌐 **Live URL — Part 2** | Live deployment for Part 2            | [Didn't Attempt](Add-Live-URL)                                             |
 
 ---
 
